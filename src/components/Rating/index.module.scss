@@ -1,0 +1,45 @@
+.ratingContainer {
+  border: 1px solid;
+  width: 500px;
+  padding: 5px;
+  height: 50px;
+  float: left;
+}
+.ratingContainer:not(:checked) > input {
+  position: absolute;
+  left: -9000px;
+}
+.ratingContainer:not(:checked) > label {
+  /* labels for inputs not checked */
+  /* default state */
+  float: right;
+  width: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #bbb;
+}
+
+.ratingContainer:not(:checked) > label:before {
+  /* create the stars */
+  content: '★ ';
+}
+.ratingContainer > input:checked ~ label {
+  /* all the labels that are checked and before cursor pointer */
+  color: yellow;
+}
+
+.ratingContainer > input:disabled + label {
+  /* if label is immediately AFTER the input */
+  /* and input is disabled because is the current selected */
+  cursor: default;
+}
+
+.ratingContainer:not(:checked) > label:hover ~ label,
+.ratingContainer:not(:checked) > label:hover {
+  /* hovering stars */
+  /* for previous labels before current label when hovering*/
+  /* for current label when hovering */
+  color: orange;
+}
